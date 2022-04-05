@@ -1,7 +1,7 @@
 
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from PyQt5 import QtCore
-from   PyQt5 import QtWidgets
+from PyQt5 import QtWidgets
 from PyQt5 import QtWebEngineWidgets 
 import sys
 
