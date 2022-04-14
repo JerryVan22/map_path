@@ -14,6 +14,7 @@ class HttpDaemon(QtCore.QThread):
         HOST, PORT = '127.0.0.1', 8000
         self._server = HTTPServer((HOST, PORT), SimpleHTTPRequestHandler)
         self._server.serve_forever()
+        
 
     def stop(self):
         # self._server.shutdown()
@@ -26,11 +27,13 @@ class Window(QtWidgets.QMainWindow):
         super(Window, self).__init__()
         self.httpd = HttpDaemon(self)
         self.httpd.start()
-        self.setGeometry(5, 30, 1355, 730)
+        self.setGeometry(0, 0, 1280, 720)
 
         self.browser = QtWebEngineWidgets.QWebEngineView()
         # self.browser.loadFinished.connect(self._loadFinished)
+        self.browser.page().profile().clearHttpCache()
         self.browser.load(QtCore.QUrl('http://localhost:8000/test4.html'))
+
         self.setCentralWidget(self.browser)
 
     def closeEvent(self, event):
