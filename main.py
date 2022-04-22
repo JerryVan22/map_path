@@ -1,8 +1,10 @@
 
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 from PyQt5 import QtWebEngineWidgets 
+from PyQt5 import QtWebChannel
 import sys
 
 
@@ -31,10 +33,22 @@ class Window(QtWidgets.QMainWindow):
 
         self.browser = QtWebEngineWidgets.QWebEngineView()
         # self.browser.loadFinished.connect(self._loadFinished)
-        self.browser.page().profile().clearHttpCache()
+        self.browser.page().profile().clearHttpCache()#清除缓存
         self.browser.load(QtCore.QUrl('http://localhost:8000/test4.html'))
-
         self.setCentralWidget(self.browser)
+
+        self.channel = QtWebChannel.QWebChannel()
+        self.channel.registerObject('backend', self)
+        self.browser.page().setWebChannel(self.channel)
+
+    @QtCore.pyqtSlot(QtCore.QJsonValue,result=list)
+    def foo(self,condition):
+        place_of_departure=condition["place_of_departure"].toInt()
+        destination=condition["destination"].toInt()
+        weather=condition["weather"].toString()
+
+        print('bar')
+        return [[31.768709, 117.189064],[31.765925, 117.185512],[31.755925, 117.185512]]
 
     def closeEvent(self, event):
         self.httpd.stop()
