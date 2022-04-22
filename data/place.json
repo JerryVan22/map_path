@@ -1,0 +1,152 @@
+[
+    {
+        "id": "1",
+        "styleId": "marker",
+        "position": [
+            31.767595,
+            117.1849
+        ],
+        "name": "博学北楼",
+        "type": "bicycle park"
+    },
+    {
+        "id": "2",
+        "styleId": "marker",
+        "position": [
+            31.768618,
+            117.182087
+        ],
+        "name": "李园",
+        "type": "bicycle park"
+    },
+    {
+        "id": "3",
+        "styleId": "marker",
+        "position": [
+            31.766781,
+            117.1828212
+        ],
+        "name": "文典阁",
+        "type": "default"
+    },
+    {
+        "id": "4",
+        "styleId": "marker",
+        "position": [
+            31.772789,
+            117.183818
+        ],
+        "name": "北体育馆",
+        "type": "default"
+    },
+    {
+        "id": "5",
+        "styleId": "marker",
+        "position": [
+            31.770298,
+            117.182849
+        ],
+        "name": "榴园",
+        "type": "default"
+    },
+    {
+        "id": "6",
+        "styleId": "marker",
+        "position": [
+            31.767708,
+            117.179369
+        ],
+        "name": "西门",
+        "type": "default"
+    },
+    {
+        "id": "7",
+        "styleId": "marker",
+        "position": [
+            31.765628,
+            117.181366
+        ],
+        "name": "梅园",
+        "type": "default"
+    },
+    {
+        "id": "8",
+        "styleId": "marker",
+        "position": [
+            31.763289,
+            117.184094
+        ],
+        "name": "桂园",
+        "type": "default"
+    },
+    {
+        "id": "9",
+        "styleId": "marker",
+        "position": [
+            31.761662,
+            117.185335
+        ],
+        "name": "南体育场",
+        "type": "default"
+    },
+    {
+        "id": "10",
+        "styleId": "marker",
+        "position": [
+            31.766035,
+            117.18453
+        ],
+        "name": "博学南楼",
+        "type": "bicycle park"
+    },
+    {
+        "id": "11",
+        "styleId": "marker",
+        "position": [
+            31.767558,
+            117.186393
+        ],
+        "name": "行知楼",
+        "type": "bicycle park"
+    },
+    {
+        "id": "12",
+        "styleId": "marker",
+        "position": [
+            31.761823,
+            117.18921
+        ],
+        "name": "行政楼",
+        "type": "default"
+    },
+    {
+        "id": "13",
+        "styleId": "marker",
+        "position": [
+            31.76365,
+            117.18678
+        ],
+        "name": "安徽大学(磬苑校区)停车场(环湖路)",
+        "type": "park"
+    },
+    {
+        "id": "14",
+        "styleId": "marker",
+        "position": [
+            31.77419,
+            117.18495
+        ],
+        "name": "安徽大学(新校区)停车场",
+        "type": "park"
+    },
+    {
+        "id": "15",
+        "styleId": "marker",
+        "position": [
+            31.76597,
+            117.18619
+        ],
+        "name": "安徽大学(磬苑校区)停车场(艺术楼)",
+        "type": "park"
+    }
+]

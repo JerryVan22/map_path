@@ -165,7 +165,7 @@
 
     async function printJSON(markerLayer) {
       // alert('ok')
-      const response = await fetch("./data.json");
+      const response = await fetch("./data/place.json");
       const json = await response.json();
       // alert(json.length)
       for (i = 0; i < json.length; i++) {

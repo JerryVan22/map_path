@@ -34,7 +34,7 @@ class Window(QtWidgets.QMainWindow):
         self.browser = QtWebEngineWidgets.QWebEngineView()
         # self.browser.loadFinished.connect(self._loadFinished)
         self.browser.page().profile().clearHttpCache()#清除缓存
-        self.browser.load(QtCore.QUrl('http://localhost:8000/test4.html'))
+        self.browser.load(QtCore.QUrl('http://localhost:8000/map.html'))
         self.setCentralWidget(self.browser)
 
         self.channel = QtWebChannel.QWebChannel()
