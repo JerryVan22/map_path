@@ -3,4 +3,5 @@
 /myenv/
 /build/
 /dist/
+/temp/
 *.spec
