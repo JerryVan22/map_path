@@ -1,0 +1,24 @@
+[
+    {
+        "place_A":"北体育馆",
+        "place_B":"榴园",
+        "distance":20
+        
+    },
+    {
+        "place_A":"榴园",
+        "place_B":"李园",
+        "distance":30
+            
+    },
+    {
+        "place_A":"榴园",
+        "place_B":"博学北楼",
+        "distance":40
+    },
+    {
+        "place_A":"李园",
+        "place_B":"博学北楼",
+        "distance":40
+    }
+]

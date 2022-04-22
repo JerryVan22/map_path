@@ -1,6 +1,5 @@
-
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-
+from model.map_model import map_model
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 from PyQt5 import QtWebEngineWidgets 
@@ -11,7 +10,6 @@ import sys
 
 
 class HttpDaemon(QtCore.QThread):
-    
     def run(self):
         HOST, PORT = '127.0.0.1', 8000
         self._server = HTTPServer((HOST, PORT), SimpleHTTPRequestHandler)
@@ -19,20 +17,20 @@ class HttpDaemon(QtCore.QThread):
         
 
     def stop(self):
-        # self._server.shutdown()
-        # self._server.socket.close()
-        # self.wait()
         self.terminate()
 
 class Window(QtWidgets.QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
+
+        self.campus_map=map_model()
+
+
         self.httpd = HttpDaemon(self)
         self.httpd.start()
         self.setGeometry(0, 0, 1280, 720)
 
         self.browser = QtWebEngineWidgets.QWebEngineView()
-        # self.browser.loadFinished.connect(self._loadFinished)
         self.browser.page().profile().clearHttpCache()#清除缓存
         self.browser.load(QtCore.QUrl('http://localhost:8000/map.html'))
         self.setCentralWidget(self.browser)
@@ -41,14 +39,16 @@ class Window(QtWidgets.QMainWindow):
         self.channel.registerObject('backend', self)
         self.browser.page().setWebChannel(self.channel)
 
+        
+
     @QtCore.pyqtSlot(QtCore.QJsonValue,result=list)
     def foo(self,condition):
         place_of_departure=condition["place_of_departure"].toInt()
         destination=condition["destination"].toInt()
         weather=condition["weather"].toString()
-
+        test=[self.campus_map.place_data[self.campus_map.name_reflect[edge["place_A"]]]["position"] for edge in self.campus_map.edge_data]
         print('bar')
-        return [[31.768709, 117.189064],[31.765925, 117.185512],[31.755925, 117.185512]]
+        return test
 
     def closeEvent(self, event):
         self.httpd.stop()
