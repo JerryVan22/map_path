@@ -20,5 +20,35 @@
         "place_A":"李园",
         "place_B":"博学北楼",
         "distance":40
+    },
+    {
+        "place_A":"李园",
+        "place_B":"博学北楼",
+        "distance":40
+    },
+    {
+        "place_A":"李园",
+        "place_B":"文典阁",
+        "distance":40
+    },
+    {
+        "place_A":"梅园",
+        "place_B":"文典阁",
+        "distance":40
+    },
+    {
+        "place_A":"梅园",
+        "place_B":"桂园",
+        "distance":40
+    },
+    {
+        "place_A":"南体育场",
+        "place_B":"桂园",
+        "distance":40
+    },
+    {
+        "place_A":"博学北楼",
+        "place_B":"博学南楼",
+        "distance":40
     }
 ]

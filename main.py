@@ -1,11 +1,14 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-from model.map_model import map_model
+import sys
+
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 from PyQt5 import QtWebEngineWidgets 
 from PyQt5 import QtWebChannel
-import sys
 
+
+from model.map_model import map_model
+from model.optimal_path_model import Dijkstra_Algorithm
 
 
 
@@ -24,11 +27,12 @@ class Window(QtWidgets.QMainWindow):
         super(Window, self).__init__()
 
         self.campus_map=map_model()
+        self.navigation=Dijkstra_Algorithm(self.campus_map)
 
 
         self.httpd = HttpDaemon(self)
         self.httpd.start()
-        self.setGeometry(0, 0, 1280, 720)
+        self.setGeometry(0, 0, 1920, 1000)
 
         self.browser = QtWebEngineWidgets.QWebEngineView()
         self.browser.page().profile().clearHttpCache()#清除缓存
@@ -43,11 +47,13 @@ class Window(QtWidgets.QMainWindow):
 
     @QtCore.pyqtSlot(QtCore.QJsonValue,result=list)
     def foo(self,condition):
+        self.campus_map=map_model()
         place_of_departure=condition["place_of_departure"].toInt()
         destination=condition["destination"].toInt()
         weather=condition["weather"].toString()
-        test=[self.campus_map.place_data[self.campus_map.name_reflect[edge["place_A"]]]["position"] for edge in self.campus_map.edge_data]
-        print('bar')
+        cur_time=condition["cur_time"].toString()
+
+        test=[[self.campus_map.place_data[self.campus_map.name_reflect[edge["place_A"]]]["position"],self.campus_map.place_data[self.campus_map.name_reflect[edge["place_B"]]]["position"]] for edge in self.campus_map.edge_data]
         return test
 
     def closeEvent(self, event):
