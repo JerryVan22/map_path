@@ -3,6 +3,7 @@ class Weather(Enum):
     sunny=auto()
     cloudy=auto()
     rain=auto()
+    snow=auto()
 
 if __name__=='__main__':
     print(Weather.sunny.name=="cloudy")

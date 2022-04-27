@@ -1,54 +1,129 @@
 [
     {
-        "place_A":"北体育馆",
-        "place_B":"榴园",
-        "distance":20
-        
+        "place_A": "北体育馆",
+        "place_B": "榴园",
+        "distance": 20,
+        "type":"default"
     },
     {
-        "place_A":"榴园",
-        "place_B":"李园",
-        "distance":30
-            
+        "place_A": "榴园",
+        "place_B": "李园",
+        "distance": 30,
+        "type":"default"
     },
     {
-        "place_A":"榴园",
-        "place_B":"博学北楼",
-        "distance":40
+        "place_A": "榴园",
+        "place_B": "博学北楼",
+        "distance": 40,
+        "type":"possible busy"
     },
     {
-        "place_A":"李园",
-        "place_B":"博学北楼",
-        "distance":40
+        "place_A": "李园",
+        "place_B": "博学北楼",
+        "distance": 40,
+        "type":"possible busy"
     },
     {
-        "place_A":"李园",
-        "place_B":"博学北楼",
-        "distance":40
+        "place_A": "李园",
+        "place_B": "文典阁",
+        "distance": 40,
+        "type":"possible busy"
     },
     {
-        "place_A":"李园",
-        "place_B":"文典阁",
-        "distance":40
+        "place_A": "梅园",
+        "place_B": "文典阁",
+        "distance": 40,
+        "type":"default"
     },
     {
-        "place_A":"梅园",
-        "place_B":"文典阁",
-        "distance":40
+        "place_A": "梅园",
+        "place_B": "桂园",
+        "distance": 40,
+        "type":"default"
     },
     {
-        "place_A":"梅园",
-        "place_B":"桂园",
-        "distance":40
+        "place_A": "南体育场",
+        "place_B": "桂园",
+        "distance": 40,
+        "type":"default"
     },
     {
-        "place_A":"南体育场",
-        "place_B":"桂园",
-        "distance":40
+        "place_A": "博学北楼",
+        "place_B": "博学南楼",
+        "distance": 40,
+        "type":"default"
+    },
+    {
+        "place_A": "李园",
+        "place_B": "西门",
+        "distance": 40,
+        "type":"default"
+    },
+    {
+        "place_A": "西门",
+        "place_B": "梅园",
+        "distance": 40,
+        "type":"default"
+    },
+    {
+        "place_A": "行政楼",
+        "place_B": "南体育场",
+        "distance": 40,
+        "type":"default"
+    },
+    {
+        "place_A": "安徽大学(磬苑校区)停车场(艺术楼)",
+        "place_B": "博学南楼",
+        "distance": 40,
+        "type":"default"
+    },
+    {
+        "place_A": "安徽大学(磬苑校区)停车场(体育馆)",
+        "place_B": "北体育馆",
+        "distance": 40,
+        "type":"default"
     },
     {
         "place_A":"博学北楼",
-        "place_B":"博学南楼",
-        "distance":40
+        "place_B":"行知楼",
+        "distance":40,
+        "type":"default"
+    },
+    {
+        "place_A":"安徽大学(磬苑校区)停车场(环湖路)",
+        "place_B":"安徽大学(磬苑校区)停车场(艺术楼)",
+        "distance":100,
+        "type":"default"
+    },
+    {
+        "place_A":"博学南楼",
+        "place_B":"桂园",
+        "distance":60,
+        "type":"default"
+    },
+    {
+        "place_A":"行知楼",
+        "place_B":"安徽大学(磬苑校区)停车场(艺术楼)",
+        "distance":80,
+        "type":"default"
+    },
+    {
+        "place_A":"安徽大学(磬苑校区)停车场(环湖路)",
+        "place_B":"行政楼",
+        "distance":90,
+        "type":"default"
+    },
+    {
+        "place_A":"安徽大学(磬苑校区)停车场(体育馆)",
+        "place_B":"行知楼",
+        "distance":100,
+        "type":"default"
+    },
+    {
+        "place_A":"北体育馆",
+        "place_B":"行知楼",
+        "distance":90,
+        "type":"default"
     }
+
 ]

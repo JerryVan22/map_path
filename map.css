@@ -31,6 +31,10 @@ select {
     left: 80px;
 }
 
+#btn-go{
+    right: 90px;
+}
+
 #weather {
     left: 500px;
     width: 80px;

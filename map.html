@@ -19,12 +19,13 @@
   <div id="container"></div>
   <input type="button" id="btn-2d" onclick="change2D()" value="切换2D">
   <input type="button" id="btn-3d" onclick="change3D()" value="切换3D">
-
+  <input type="button" id="btn-go" onclick="change3D()" value="导航">
 
   <select id="weather" title="天气">
     <option value="sunny">☀️晴天</option>
     <option value="cloudy">⛅多云</option>
     <option value="rain">🌧下雨</option>
+    <option value="snow">❄️下雪</option>
   </select>
 
   <select id="trip_mode" title="出现">
@@ -121,10 +122,17 @@
       styles: {
         'style_blue': new TMap.PolylineStyle({
           'color': '#3777FF', //线填充色
-          'width': 6, //折线宽度
-          'borderWidth': 5, //边线宽度
+          'width': 8, //折线宽度
+          'borderWidth': 2, //边线宽度
           'borderColor': '#FFF', //边线颜色
-          'lineCap': 'butt' //线端头方式
+          'lineCap': 'round', //线端头方式,
+          'showArrow': true,
+          'ArrowOptions': {
+            'width': 5,
+            'height': 5,
+            'space': 50
+          },
+
         }),
         'style_red': new TMap.PolylineStyle({
           'color': '#CC0000', //线填充色
@@ -138,22 +146,35 @@
       geometries: [
       ]
     });
-    
-    document.getElementById("btn-2d").addEventListener("click", function () {
+
+    document.getElementById("btn-go").addEventListener("click", function () {
       let weather_select = document.getElementById("weather");
       let weather_val = weather_select.options[weather_select.selectedIndex].value;
 
       let place_of_departure_index = document.getElementById("place_of_departure").selectedIndex;
       let destination_index = document.getElementById("destination").selectedIndex;
 
+      let trip_mode_select = document.getElementById("trip_mode")
+      let trip_mode_val = trip_mode_select.options[trip_mode_select.selectedIndex].value;
+
+
       let condition = {
         "weather": weather_val,
         "place_of_departure": place_of_departure_index,
         "destination": destination_index,
+        "trip_mode": trip_mode_val,
         "cur_time": document.querySelector('input[type="time"]').value,
       }
+
       backend.foo(condition, function (arr) {
+        let edges = polylineLayer.getGeometries();
+        for (let i = 0; i < edges.length; i++) {
+          polylineLayer.remove(edges[i]['id'])
+          //alert('hello');
+        }
+
         for (let i = 0; i < arr.length; i++) {
+
           polyArray = arr[i].map(p => {
             return new TMap.LatLng(p[0], p[1]);
           });

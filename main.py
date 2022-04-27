@@ -1,5 +1,6 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import sys
+import datetime
 
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
@@ -9,7 +10,8 @@ from PyQt5 import QtWebChannel
 
 from model.map_model import map_model
 from model.optimal_path_model import Dijkstra_Algorithm
-
+from model.trip_mode_model import Trip_mode
+from model.weather_model import Weather
 
 
 class HttpDaemon(QtCore.QThread):
@@ -47,15 +49,20 @@ class Window(QtWidgets.QMainWindow):
 
     @QtCore.pyqtSlot(QtCore.QJsonValue,result=list)
     def foo(self,condition):
-        self.campus_map=map_model()
+        # self.campus_map=map_model()
         place_of_departure=condition["place_of_departure"].toInt()
         destination=condition["destination"].toInt()
-        weather=condition["weather"].toString()
-        cur_time=condition["cur_time"].toString()
+        trip_mode=Trip_mode[condition["trip_mode"].toString()]
+        weather=Weather[condition["weather"].toString()]
+        cur_time=datetime.datetime.strptime(condition["cur_time"].toString(), '%H:%M').time()
+        test=self.navigation.solve(weather,trip_mode,cur_time,place_of_departure,destination)
+        res=[]
+        for i in range(len(test)-1):
+            res.append([test[i]["position"],test[i+1]["position"]])
 
-        test=[[self.campus_map.place_data[self.campus_map.name_reflect[edge["place_A"]]]["position"],self.campus_map.place_data[self.campus_map.name_reflect[edge["place_B"]]]["position"]] for edge in self.campus_map.edge_data]
-        return test
-
+        # test_2=[[self.campus_map.place_data[self.campus_map.name_reflect[edge["place_A"]]]["position"],self.campus_map.place_data[self.campus_map.name_reflect[edge["place_B"]]]["position"]] for edge in self.campus_map.edge_data]
+        return res
+        
     def closeEvent(self, event):
         self.httpd.stop()
         self.close()
