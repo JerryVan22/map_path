@@ -35,6 +35,14 @@ select {
     right: 90px;
 }
 
+#btn-random{
+    right:150px;
+}
+
+#btn-show_all{
+    right:250px;
+}
+
 #weather {
     left: 500px;
     width: 80px;

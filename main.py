@@ -57,12 +57,29 @@ class Window(QtWidgets.QMainWindow):
         cur_time=datetime.datetime.strptime(condition["cur_time"].toString(), '%H:%M').time()
         test=self.navigation.solve(weather,trip_mode,cur_time,place_of_departure,destination)
         res=[]
-        for i in range(len(test)-1):
-            res.append([test[i]["position"],test[i+1]["position"]])
 
+        path_name=[]
+        if test is not None:
+            for i in range(len(test)):
+                path_name.append(test[i]["name"])
+
+            path_name="路径为: "+str.join(",",path_name)
+            self.navigation.reason.append(path_name)
+
+            for i in range(len(test)-1):
+                res.append([test[i]["position"],test[i+1]["position"]])
+
+        reason=str.join("\n",self.navigation.reason)
+        res.append(reason)
         # test_2=[[self.campus_map.place_data[self.campus_map.name_reflect[edge["place_A"]]]["position"],self.campus_map.place_data[self.campus_map.name_reflect[edge["place_B"]]]["position"]] for edge in self.campus_map.edge_data]
         return res
-        
+    
+
+    @QtCore.pyqtSlot(result=list)
+    def draw_all_edges(self):
+        return [[self.campus_map.place_data[self.campus_map.name_reflect[edge["place_A"]]]["position"],self.campus_map.place_data[self.campus_map.name_reflect[edge["place_B"]]]["position"]] for edge in self.campus_map.edge_data]
+
+
     def closeEvent(self, event):
         self.httpd.stop()
         self.close()

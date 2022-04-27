@@ -20,6 +20,9 @@
   <input type="button" id="btn-2d" onclick="change2D()" value="切换2D">
   <input type="button" id="btn-3d" onclick="change3D()" value="切换3D">
   <input type="button" id="btn-go" onclick="change3D()" value="导航">
+  <input type="button" id="btn-random" onclick="random_select()" value="随机生成">
+  <input type="button" id="btn-show_all" value="显示所有边">
+
 
   <select id="weather" title="天气">
     <option value="sunny">☀️晴天</option>
@@ -39,10 +42,10 @@
 
 
 
-  <select class="ct-select" id="place_of_departure" name="CMS Features">
+  <select class="ct-select" id="place_of_departure">
   </select>
 
-  <select class="ct-select2" id="destination" name="CMS Features">
+  <select class="ct-select2" id="destination">
   </select>
 
 
@@ -74,6 +77,19 @@
     function change3D() {
       map.setViewMode('3D');
       map.setPitch(70);
+    }
+
+    function random_select() {
+      let dep = document.getElementById("place_of_departure");
+      let dep_index = Math.floor(Math.random() * dep.options.length);
+      dep.selectedIndex = dep_index;
+
+      let des = document.getElementById("destination");
+      let des_index = Math.floor(Math.random() * des.options.length);
+      des.selectedIndex = des_index;
+
+
+
     }
 
     var marker = new TMap.MultiMarker({
@@ -173,6 +189,31 @@
           //alert('hello');
         }
 
+        for (let i = 0; i < arr.length - 1; i++) {
+
+          polyArray = arr[i].map(p => {
+            return new TMap.LatLng(p[0], p[1]);
+          });
+          polylineLayer.add({//新的折线添加到图层中
+            'id': 'pl_2' + String(i),
+            'styleId': 'style_blue',
+            'paths': polyArray
+          })
+        }
+        alert(arr[arr.length - 1])
+      });
+
+    });
+
+
+    document.getElementById("btn-show_all").addEventListener("click", function () {
+      backend.draw_all_edges(function (arr) {
+        let edges = polylineLayer.getGeometries();
+        for (let i = 0; i < edges.length; i++) {
+          polylineLayer.remove(edges[i]['id'])
+          //alert('hello');
+        }
+
         for (let i = 0; i < arr.length; i++) {
 
           polyArray = arr[i].map(p => {
@@ -185,7 +226,7 @@
           })
         }
       });
-    });
+    })
 
 
   </script>
